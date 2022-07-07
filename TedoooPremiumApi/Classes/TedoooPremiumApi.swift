@@ -6,13 +6,13 @@ public enum PremiumPlan {
 }
 
 public struct PremiumPerson {
-    public init(name: String, avatar: String) {
+    public init(name: String, avatar: String?) {
         self.name = name
         self.avatar = avatar
     }
     
     public let name: String
-    public let avatar: String
+    public let avatar: String?
 }
 
 public protocol TedoooPremiumApi {
