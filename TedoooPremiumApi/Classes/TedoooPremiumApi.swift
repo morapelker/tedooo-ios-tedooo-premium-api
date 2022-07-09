@@ -20,7 +20,27 @@ public enum BillingProcessResult {
     case cancelled
 }
 
+public struct SubInformation {
+    
+    public let monthId: String
+    public let yearId: String
+    
+    public init(monthId: String, yearId: String) {
+        self.monthId = monthId
+        self.yearId = yearId
+    }
+    
+}
+
+public enum SubError: Error {
+    case alreadySubbed
+}
+
 public protocol TedoooPremiumApi {
+    
+    func validateSubPermissions() -> AnyPublisher<SubInformation, SubError>
+    
+    func registerSubInformation(_ information: SubInformation)
     
     func startBillingProcess(presentor: UIViewController, plan: PremiumPlan) -> AnyPublisher<BillingProcessResult, Never>
         
