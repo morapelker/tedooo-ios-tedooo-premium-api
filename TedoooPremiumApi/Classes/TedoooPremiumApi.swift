@@ -22,12 +22,14 @@ public enum BillingProcessResult {
 
 public struct SubInformation {
     
+    public let hasTrial: Bool
     public let monthId: String
     public let yearId: String
     
-    public init(monthId: String, yearId: String) {
+    public init(monthId: String, yearId: String, hasTrial: Bool) {
         self.monthId = monthId
         self.yearId = yearId
+        self.hasTrial = hasTrial
     }
     
 }
