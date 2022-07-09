@@ -15,9 +15,14 @@ public struct PremiumPerson {
     public let avatar: String?
 }
 
+public enum BillingProcessResult {
+    case success(_ newSubUntil: Int64)
+    case cancelled
+}
+
 public protocol TedoooPremiumApi {
     
-    func startBillingProcess(presentor: UIViewController, plan: PremiumPlan) -> AnyPublisher<Int64, Never>
+    func startBillingProcess(presentor: UIViewController, plan: PremiumPlan) -> AnyPublisher<BillingProcessResult, Never>
         
     func getPremiumPeople() -> AnyPublisher<[PremiumPerson], Never>
 }
